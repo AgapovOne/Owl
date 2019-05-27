@@ -49,6 +49,11 @@ public class EmojiBrowserController: UIViewController {
             }
 		}
         director?.registerHeaderFooterAdapter(headerAdapter)
+
+        // SCROLL
+        director?.scrollEvents.didScroll = { scrollView in
+//            print(scrollView.contentOffset)
+        }
         
         // DATA
         for (idx, rawSection) in emojiList.enumerated() {
