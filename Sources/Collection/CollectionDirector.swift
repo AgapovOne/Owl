@@ -156,9 +156,17 @@ open class CollectionDirector: NSObject,
         let adapter: CollectionHeaderFooterAdapterProtocol?
         switch kind {
         case UICollectionView.elementKindSectionHeader:
-            adapter = sections[indexPath.section].headerView
+            if indexPath.section < sections.count {
+                adapter = sections[indexPath.section].headerView
+            } else {
+                return nil
+            }
         case UICollectionView.elementKindSectionFooter:
-            adapter = sections[indexPath.section].footerView
+            if indexPath.section < sections.count {
+                adapter = sections[indexPath.section].footerView
+            } else {
+                return nil
+            }
         default:
             return nil
         }
